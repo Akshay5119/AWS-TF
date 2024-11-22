@@ -23,13 +23,14 @@ jobs:
         with:
           terraform_version: '1.5.0' # specify the version of Terraform you are using
 
-      # Set up AWS credentials
+# Set up AWS credentials
       - name: Set up AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: 'ap-south-1'
+           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+           aws-region: 'ap-south-1'  # Specify the AWS region you are working with
+
 
       # Initialize Terraform
       - name: Terraform Init
@@ -43,11 +44,9 @@ jobs:
       - name: Terraform Plan
         run: terraform plan
 
-      # Apply Terraform changes
+      # Apply Terraform changes (uncomment for actual deployment)
       - name: Terraform Apply
         run: terraform apply -auto-approve
+        env:
+          TF_VAR_example_variable: ${{ secrets.TF_VAR_example_variable }}  # if you have any sensitive Terraform variables
 
-      # (Optional) Destroy Terraform resources
-      # Uncomment this block to enable destroy functionality
-      # - name: Terraform Destroy
-      #   run: terraform destroy -auto-approve
