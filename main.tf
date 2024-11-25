@@ -3,6 +3,6 @@ provider "aws"{
 }
 
 resource "aws_vpc" "my_vpc" {
-  cidr_block = "10.80.0.0/16"
+  cidr_block = "10.90.0.0/16"
 
 }
