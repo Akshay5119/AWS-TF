@@ -8,7 +8,7 @@ resource "aws_instance" "my_ec2_instance" {
   vpc_security_group_ids = ["sg-04eadbe34d65fe8b2"] # Correct attribute for security groups in VPC
 
   tags = {
-    Name = "MyApp-Ec2-Ubuntu"
+    Name = "MyApp-Ec2-TF"
   }
 }
 
