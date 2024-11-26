@@ -1,7 +1,7 @@
 resource "aws_instance" "my_ec2_instance" {
   ami           = "ami-001c21d4d39ea1a1c"
   instance_type = "t2.micro"
-  key_name      = "my-key-pair" # Replace with your key pair name
+  key_name      = "dell-accenture" # Replace with your key pair name
 
   iam_instance_profile = "Admin_Role"
 
