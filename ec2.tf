@@ -3,18 +3,18 @@ resource "aws_instance" "my_ec2_instance" {
   instance_type = "t2.micro"
   key_name      = "my-key-pair" # Replace with your key pair name
 
-  iam_instance_profile = "Admin_Role" # Assign the IAM instance profile
+  iam_instance_profile = "Admin_Role"
 
-  security_groups = ["sg-04eadbe34d65fe8b2"]
+  vpc_security_group_ids = ["sg-04eadbe34d65fe8b2"] # Correct attribute for security groups in VPC
 
   tags = {
-    Name = "MyApp-Ec2-TF"
+    Name = "MyApp-Ec2-Ubuntu"
   }
 }
 
 resource "aws_eip" "my_eip" {
   instance = aws_instance.my_ec2_instance.id
-  domain   = "vpc" # Use "domain" instead of "vpc"
+  domain   = "vpc"
 
   tags = {
     Name = "MyElasticIP"
